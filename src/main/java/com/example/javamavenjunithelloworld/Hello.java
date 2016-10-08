@@ -2,11 +2,12 @@ package com.example.javamavenjunithelloworld;
 
 import java.io.PrintStream;
 
+
 /**
  * Simple class that says "Hello!".
  */
 public class Hello {
-
+   
     static final String HELLO = "Hello!";
     public static final int MAXIMUM_AMOUNT_OF_TIMES = 20;
     private short times = 1;
