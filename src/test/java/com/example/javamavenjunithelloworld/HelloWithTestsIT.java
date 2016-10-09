@@ -3,9 +3,13 @@ package com.example.javamavenjunithelloworld;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.StandardOutputStreamLog;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
+
+import java.io.File;
 
 /**
  * Integration test for the HelloApp program.
@@ -32,10 +36,15 @@ public class HelloWithTestsIT {
 
     @Test
     public void doesItSayHelloTest3() {
-        String[] args = {"3"};
+        String[] args = {"4"};
         HelloApp.main(args);
 
-        String thrice = Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n";
+        String thrice = Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n";
         assertThat(out.getLog(), is(equalTo(thrice)));
+
+File file = new File("C:\\Selenium\\IEDriverServer_x64_2.53.1\\geckodriver.exe");
+System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
+WebDriver driver = new FirefoxDriver();
+driver.get("http://www.guru99.com/selenium-tutorial.html");
     }
 }
