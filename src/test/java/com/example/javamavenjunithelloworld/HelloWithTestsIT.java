@@ -3,13 +3,19 @@ package com.example.javamavenjunithelloworld;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.contrib.java.lang.system.StandardOutputStreamLog;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import com.sun.jna.platform.FileUtils;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Integration test for the HelloApp program.
@@ -40,12 +46,26 @@ public class HelloWithTestsIT {
         HelloApp.main(args);
 
         String thrice = Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n";
-       
+     // Setup firefox binary to start in Xvfb        
+        String Xport = System.getProperty(
+                "lmportal.xvfb.id", ":1");
+        final File firefoxPath = new File(System.getProperty(
+                "lmportal.deploy.firefox.path", "/firefox"));
+        FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
+        firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
 
-//File file = new File("C:\\Selenium\\IEDriverServer_x64_2.53.1\\geckodriver.exe");
-//System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
-WebDriver driver = new FirefoxDriver();
-driver.get("http://www.guru99.com/selenium-tutorial.html");
+        // Start Firefox driver
+        WebDriver driver = new FirefoxDriver(firefoxBinary, null);
+        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.get("http://google.com/");
+
+        // Take snapshot of browser
+        //File srcFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        //FileUtils f1 =FileUtils.getInstance();
+        //f1.copyFile(srcFile, new File("ffsnapshot.png"));
+        driver.quit();
+
+
 assertThat(out.getLog(), is(equalTo(thrice)));
     }
 }
