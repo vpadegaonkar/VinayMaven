@@ -42,8 +42,8 @@ public class HelloWithTestsIT {
         String thrice = Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n";
        
 
-File file = new File("C:\\Selenium\\IEDriverServer_x64_2.53.1\\geckodriver.exe");
-System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
+//File file = new File("C:\\Selenium\\IEDriverServer_x64_2.53.1\\geckodriver.exe");
+//System.setProperty("webdriver.gecko.driver", file.getAbsolutePath());
 WebDriver driver = new FirefoxDriver();
 driver.get("http://www.guru99.com/selenium-tutorial.html");
 assertThat(out.getLog(), is(equalTo(thrice)));
