@@ -48,9 +48,9 @@ public class HelloWithTestsIT {
         String thrice = Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n" + Hello.HELLO + "\n";
      // Setup firefox binary to start in Xvfb        
         String Xport = System.getProperty(
-                "lmportal.xvfb.id", ":1");
+                "lmportal.xvfb.id", ":10");
         final File firefoxPath = new File(System.getProperty(
-                "lmportal.deploy.firefox.path", "/usr/bin/firefox"));
+                "lmportal.deploy.firefox.path", "/usr/lib/firefox/"));
         FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
         firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
 
