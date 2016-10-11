@@ -50,7 +50,7 @@ public class HelloWithTestsIT {
         String Xport = System.getProperty(
                 "lmportal.xvfb.id", ":10");
         final File firefoxPath = new File(System.getProperty(
-                "lmportal.deploy.firefox.path", "/usr/lib/firefox/"));
+                "lmportal.deploy.firefox.path", "/usr/bin/firefox/"));
         FirefoxBinary firefoxBinary = new FirefoxBinary(firefoxPath);
         firefoxBinary.setEnvironmentProperty("DISPLAY", Xport);
 
