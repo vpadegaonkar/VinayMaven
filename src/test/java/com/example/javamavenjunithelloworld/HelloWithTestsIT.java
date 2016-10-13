@@ -68,7 +68,7 @@ public class HelloWithTestsIT {
         driver.quit();
         */
         
-        System.setProperty("webdriver.chrome.driver", "/chrome/chromedriver");
+        System.setProperty("webdriver.chrome.driver", "/usr/local/bin/chromedriver");
 
         WebDriver driver = new ChromeDriver();
         driver.get("http://www.google.com/xhtml");
