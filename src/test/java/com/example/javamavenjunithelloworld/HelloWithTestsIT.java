@@ -77,10 +77,14 @@ public class HelloWithTestsIT {
         searchBox.sendKeys("ChromeDriver");
         searchBox.submit();
         Thread.sleep(5000);  // Let the user actually see something!
-        driver.quit();
+        
 
 
 
 assertThat(out.getLog(), is(equalTo(thrice)));
+String S = driver.getCurrentUrl();
+System.out.println("Url of the site is"+S);
+
+driver.quit();
     }
 }
