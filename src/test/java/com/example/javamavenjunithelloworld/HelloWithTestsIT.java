@@ -88,7 +88,6 @@ assertThat(out.getLog(), is(equalTo(thrice)));
 String S = driver.getCurrentUrl();
 System.out.println("Url of the site is"+S);
 driver.quit();
-//WebDriver driver1 = new RemoteWebDriver(new URL("http://ec2-54-201-92-151.us-west-2.compute.amazonaws.com:4444/wd/hub"), capability);
-Selenium selenium = new DefaultSelenium("ec2-54-201-92-151.us-west-2.compute.amazonaws.com", 4444, "*firefox", "http://my.test.site.org/");
+
     }
 }
